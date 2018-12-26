@@ -16,7 +16,7 @@
  *  'Take one down and pass it around, 98 bottles of beer on the wall.'
  *  '98 bottles of beer on the wall, 98 bottles of beer.'
  *  'Take one down and pass it around, 97 bottles of beer on the wall.'
- *  ...
+ *  ../.
  *  '1 bottle of beer on the wall, 1 bottle of beer.'
  *  'Take one down and pass it around, no more bottles of beer on the wall.'
  *  'No more bottles of beer on the wall, no more bottles of beer.'
@@ -33,6 +33,22 @@
  *
  */
 function* get99BottlesOfBeer() {
+    var bottles = 99;
+    var leftPart = "",rightPart = "";
+    while(true)
+    {
+        leftPart = `${bottles > 0 ? bottles : 'No more'} bottle${bottles!==1 ?'s' : ''} of beer on the wall,`;
+        rightPart = ` ${bottles > 0 ? bottles : 'no more'} bottle${bottles!==1 ?'s' : ''} of beer.`;
+        yield leftPart + rightPart;
+        leftPart = `${bottles > 0 ?'Take one down and pass it around' : 'Go to the store and buy some more'},`;
+        if(bottles === 0)
+            bottles = 100;
+        rightPart =  ` ${bottles-1 > 0 ? bottles-1 : 'no more'} bottle${bottles-1!==1 ?'s' : ''} of beer on the wall.`;
+        yield leftPart + rightPart;
+        if(bottles === 100)
+            return;
+        bottles--;
+    }
     throw new Error('Not implemented');
 }
 
@@ -47,6 +63,16 @@ function* get99BottlesOfBeer() {
  *
  */
 function* getFibonacciSequence() {
+    var f1 = 0;
+    var f2 = 1;
+    yield f1;
+    yield f2;
+    while (true)
+    {
+        f2 += f1;
+        f1 = f2 - f1;
+        yield f2;     
+    }
     throw new Error('Not implemented');
 }
 
@@ -82,6 +108,18 @@ function* getFibonacciSequence() {
  *
  */
 function* depthTraversalTree(root) {
+    /*var tmp = [];
+    tmp.push(root);
+    while (tmp.length){
+        var temp = tmp.shift();
+        var Arrtmp = [];
+        if (temp.children){
+            for (var ch of temp.children)
+            Arrtmp.push(ch);
+        tmp.slice(0,0, ...Arrtmp);
+        }
+        yield temp;       
+    }*/
     throw new Error('Not implemented');
 }
 
@@ -108,6 +146,19 @@ function* depthTraversalTree(root) {
  *
  */
 function* breadthTraversalTree(root) {
+ /*   var tmp = [];
+    tmp.push(root);
+    while(tmp.length){
+        var temp = tmp.shift();
+        var Arrtmp = [];
+        if (temp.children){
+            for (var ch of temp.children){
+                Arrtmp.push(ch);
+                tmp.slice(tmp.length,0, ...Arrtmp);
+            }
+        yield temp;
+        }
+    }*/
     throw new Error('Not implemented');
 }
 
@@ -126,6 +177,24 @@ function* breadthTraversalTree(root) {
  *   [ 1, 3, 5, ... ], [ -1 ] => [ -1, 1, 3, 5, ...]
  */
 function* mergeSortedSequences(source1, source2) {
+  /* var tmp1 = source1();
+    var tmp2 = source2();
+    while (true){
+        var x = tmp1.next();
+        var y = tmp2.next();
+        if (x.value < y.value){
+            if (x.done === false)
+            yield x.value;
+            if (y.done === false)
+            yield y.value;
+        }
+        else{
+            if (y.done === false)
+            yield y.value;
+            if (x.done === false)
+            yield x.value;
+        }
+    }*/
     throw new Error('Not implemented');
 }
 
